@@ -1,13 +1,23 @@
 package com.cdel.domain;
 
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
+
 /**
  * @author pengxt
  * @version 1.0
  * @date 2021/11/4 20:25
  */
-public class User {
+public class User implements BeanFactoryAware, ApplicationContextAware {
 	private Integer userId;
 	private String userName;
+
+	private BeanFactory beanFactory;
+
+	private ApplicationContext applicationContext;
 
 	public User() {
 	}
@@ -39,5 +49,15 @@ public class User {
 				"userId=" + userId +
 				", userName='" + userName + '\'' +
 				'}';
+	}
+
+	@Override
+	public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+		this.beanFactory = beanFactory;
+	}
+
+	@Override
+	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+		this.applicationContext = applicationContext;
 	}
 }

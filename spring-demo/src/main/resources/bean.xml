@@ -10,4 +10,12 @@
 		<property name="userId" value="${config.userId}"/>
 		<property name="userName" value="${config.userName}"/>
 	</bean>
+
+	<bean id="a" class="com.cdel.domain.A">
+		<property name="b" ref="b"/>
+	</bean>
+
+	<bean id="b" class="com.cdel.domain.B">
+		<property name="a" ref="a"/>
+	</bean>
 </beans>
